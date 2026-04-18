@@ -1,0 +1,7 @@
+disease-env/
+__pycache__/
+*.pyc
+models/
+data/raw/
+data/processed/
+.ipynb_checkpoints/
