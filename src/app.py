@@ -108,21 +108,28 @@ if st.button("Check Heart Risk"):
     # ---------------------------
     # SHAP EXPLANATION
     # ---------------------------
-    st.subheader("Why this prediction? (AI explanation)")
+    
+import shap
+import matplotlib.pyplot as plt
+import streamlit as st
 
-    try:
-        explainer = shap.TreeExplainer(model)
-        shap_values = explainer.shap_values(input_data)
+st.subheader("Why this prediction? (AI explanation)")
 
-        fig = plt.figure()
-        shap.force_plot(
-            explainer.expected_value,
-            shap_values[0],
-            input_data[0],
-            matplotlib=True
-        )
+try:
+    explainer = shap.TreeExplainer(model)
 
-        st.pyplot(fig)
+    shap_values = explainer.shap_values(input_data)
 
-    except Exception:
-        st.warning("Explainability visualization not available for this run.")
+    fig, ax = plt.subplots()
+
+    shap.summary_plot(
+        shap_values,
+        input_data,
+        show=False
+    )
+
+    st.pyplot(plt.gcf())
+
+except Exception as e:
+    st.warning("Explainability visualization not available.")
+    st.text(str(e))
