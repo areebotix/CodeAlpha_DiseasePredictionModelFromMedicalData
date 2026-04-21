@@ -16,8 +16,8 @@ st.caption("⚠️ This is an AI-based educational tool, not a medical diagnosis
 # ---------------------------
 # LOAD MODEL
 # ---------------------------
-model = joblib.load("C:/CodeAlpha_DiseasePredictionFromMedicalData/models/heart_model.pkl")
-
+#model = joblib.load("C:/CodeAlpha_DiseasePredictionFromMedicalData/models/heart_model.pkl")
+model = joblib.load("models/heart_model.pkl")
 # ---------------------------
 # USER-FRIENDLY INPUTS (NO RAW CODES)
 # ---------------------------
